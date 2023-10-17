@@ -1,0 +1,26 @@
+plugins {
+    id("java")
+}
+
+description = "Spring Learn"
+group = "org.springframework"
+version = "6.0.1-SNAPSHOT"
+
+dependencies {
+    api(project(":spring-aop"))
+    api(project(":spring-beans"))
+    api(project(":spring-context"))
+    api(project(":spring-core"))
+    api(project(":spring-expression"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+}
+
+test {
+    description = "Runs JUnit 4, JUnit Jupiter, and TestNG tests."
+
+    useJUnitPlatform {
+        includeEngines "junit-vintage", "junit-jupiter", "testng"
+        excludeTags "failing-test-case"
+    }
+}

@@ -138,9 +138,11 @@ class ConfigurationClassBeanDefinitionReader {
 			return;
 		}
 
+		// 被@Impoer注释导入的，注册自己
 		if (configClass.isImported()) {
 			registerBeanDefinitionForImportedConfigurationClass(configClass);
 		}
+		// 注册 方法中被@Bean注释的 bean实体
 		for (BeanMethod beanMethod : configClass.getBeanMethods()) {
 			loadBeanDefinitionsForBeanMethod(beanMethod);
 		}
